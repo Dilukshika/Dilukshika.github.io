@@ -3,6 +3,13 @@
 # Anything dropped in the project root is a draft and stays out of the repo.
 /*.pdf
 
+# CV source documents. These are never published: Word files carry revision
+# history, author metadata and often the unredacted contact details, none of
+# which should leave this machine.
+*.docx
+*.doc
+*.odt
+
 # Full-size originals of the headshot. Only the cropped, resized copy under
 # assets/img/ ships; the camera original is large and needs no publishing.
 /*.jpg
