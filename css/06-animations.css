@@ -1,0 +1,123 @@
+/* ==========================================================================
+   06-ANIMATIONS — Keyframes, the reveal system, reduced-motion.
+   Only `transform` and `opacity` are animated (Motion Principle 3).
+   ========================================================================== */
+
+@layer animations {
+
+/* --------------------------------------------------------------------------
+   Scroll reveal (A4 / A5)
+   -------------------------------------------------------------------------- */
+/* The hidden state is gated on :root[data-js], which the inline <head> script
+   sets and a watchdog removes if main.js never boots. A script that fails to
+   load — a syntax error, an offline CDN, a file:// open — can therefore never
+   leave the page blank: the content simply appears unanimated (§7.7). */
+[data-reveal] {
+  transition:
+    opacity   var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+:root[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+:root[data-js] [data-reveal="left"]  { transform: translateX(-28px); }
+:root[data-js] [data-reveal="right"] { transform: translateX(28px); }
+:root[data-js] [data-reveal="scale"] { transform: scale(.96); }
+:root[data-js] [data-reveal="fade"]  { transform: none; }
+
+/* One selector heavier than every hidden-state rule above, so it always wins. */
+:root[data-js] [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   Hero entrance (A2)
+   -------------------------------------------------------------------------- */
+.hero__inner > * {
+  opacity: 0;
+  animation: rise-in 700ms var(--ease-out) forwards;
+  animation-delay: calc(120ms + var(--i, 0) * 90ms);
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Gradient text sweep (A3)
+   -------------------------------------------------------------------------- */
+@keyframes text-sweep {
+  0%, 100% { background-position: 120% 50%; }
+  50%      { background-position: -20% 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   Availability pulse
+   -------------------------------------------------------------------------- */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: .7; }
+  70%  { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Scroll cue nudge
+   -------------------------------------------------------------------------- */
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* --------------------------------------------------------------------------
+   Copy confirmation pop (A18)
+   -------------------------------------------------------------------------- */
+@keyframes pop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+.copy-btn.is-copied .icon { animation: pop 240ms var(--ease-spring); }
+
+/* --------------------------------------------------------------------------
+   Theme cross-fade (A16) — progressive enhancement
+   -------------------------------------------------------------------------- */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 300ms;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion (A/§7.6) — a first-class path, not a broken one.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  .hero__inner > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .timeline__item::before { transform: scaleY(1) !important; }
+  .timeline__node { transform: scale(1) !important; }
+  .hero__pulse::after { display: none; }
+  .hero__surname {
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: var(--accent);
+  }
+}
+
+}

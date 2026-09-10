@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+    } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+  })();
+</script>
+<title>Page not found — Dilukshika Sivanathan</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/main.css">
+<style>
+  .notfound {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: var(--sp-5);
+  }
+  .notfound__code {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .notfound h1 { font-size: var(--fs-hero); line-height: .98; letter-spacing: -.035em; }
+</style>
+</head>
+<body>
+<main class="layout">
+  <div class="notfound">
+    <p class="notfound__code">Error 404</p>
+    <h1>Nothing here.</h1>
+    <p class="secondary narrow">
+      That address does not exist on this site. Everything lives on one page —
+      the link below will take you back to it.
+    </p>
+    <div class="cluster">
+      <a class="btn btn--primary" href="/">Back to the portfolio</a>
+      <a class="btn btn--ghost" href="mailto:dilukshika99@gmail.com">Email me instead</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

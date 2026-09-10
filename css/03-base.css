@@ -1,0 +1,100 @@
+/* ==========================================================================
+   03-BASE — Element defaults, typography, focus.
+
+   FONTS: the site ships using system fallback stacks so there are no missing
+   file requests out of the box. To upgrade to the designed typefaces, drop the
+   five .woff2 files into assets/fonts/ and uncomment the @font-face block
+   below — no other change is needed. See README.md § Fonts.
+   ========================================================================== */
+
+@layer base {
+
+/*
+@font-face { font-family: "Space Grotesk"; src: url("../assets/fonts/space-grotesk-500.woff2") format("woff2");
+             font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("../assets/fonts/space-grotesk-700.woff2") format("woff2");
+             font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../assets/fonts/inter-400.woff2") format("woff2");
+             font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../assets/fonts/inter-600.woff2") format("woff2");
+             font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/jetbrains-mono-400.woff2") format("woff2");
+             font-weight: 400; font-style: normal; font-display: swap; }
+*/
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  transition: background-color var(--dur-base) var(--ease-in-out),
+              color var(--dur-base) var(--ease-in-out);
+}
+
+/* Subtle grain so large dark areas do not band. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .5;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, var(--accent-dim), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 90% 20%, var(--accent-2-dim), transparent 70%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-snug); }
+
+p { text-wrap: pretty; }
+
+strong, b { font-weight: 600; color: var(--text-primary); }
+
+a {
+  color: var(--accent);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--accent-hover); }
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* One focus style, everywhere, never removed. */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+svg.icon {
+  width: 1.25em;
+  height: 1.25em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+}

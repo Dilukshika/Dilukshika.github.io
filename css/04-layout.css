@@ -1,0 +1,85 @@
+/* ==========================================================================
+   04-LAYOUT — Container grid, sections, full-bleed escape hatch.
+   ========================================================================== */
+
+@layer layout {
+
+.layout {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [content-start] min(var(--container), 100% - var(--gutter) * 2)
+    [content-end] minmax(var(--gutter), 1fr)
+    [full-end];
+}
+
+.layout > * { grid-column: content; }
+.layout > .full-bleed { grid-column: full; }
+
+.section {
+  padding-block: var(--section-y);
+  position: relative;
+}
+
+/* Skip render work for sections that are still far off-screen.
+   NOT applied by default: a skipped subtree does not report IntersectionObserver
+   intersections, which makes the scroll reveals inside it fire late, and the
+   estimated height makes the scroll-progress bar jump. On a ~120 KB page the
+   saving is not worth either. Add the class back only if the page grows a lot
+   and you re-test the reveals. */
+.section--deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+.section__inner {
+  display: grid;
+  gap: var(--sp-8);
+}
+
+.section-head {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: var(--container-narrow);
+}
+
+.section-head__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section-head__eyebrow::after {
+  content: "";
+  height: 1px;
+  width: clamp(2rem, 12vw, 7rem);
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.section-head__lede {
+  color: var(--text-secondary);
+  max-width: 62ch;
+}
+
+/* Reusable intrinsic grid — no breakpoints needed. */
+.grid-auto {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+}
+
+.grid-auto--sm {
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+/* Vertical rhythm inside prose blocks. */
+.flow > * + * { margin-block-start: var(--sp-4); }
+
+main { display: block; }
+
+}

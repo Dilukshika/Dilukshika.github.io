@@ -1,0 +1,23 @@
+# Working copies of the CV. The ONLY CV that ships is assets/cv/Dilukshika_Sivanathan_CV.pdf,
+# and that one must be the redacted version — no home address, no phone number.
+# Anything dropped in the project root is a draft and stays out of the repo.
+/*.pdf
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Optional build output (tools/build.js)
+dist/
+*.min.css
+*.min.js
+
+# Node, only if the optional build tooling is used
+node_modules/
+package-lock.json

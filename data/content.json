@@ -1,0 +1,279 @@
+{
+  "profile": {
+    "name": "Dilukshika Sivanathan",
+    "firstName": "Dilukshika",
+    "lastName": "Sivanathan",
+    "headline": "Junior Software & Data Developer",
+    "subheadline": "BSc (Hons) Applied Computing — First-Class Honours",
+    "tagline": "I build data-collection and monitoring systems — from sensor to dashboard.",
+    "location": "Cambridgeshire, United Kingdom",
+    "email": "dilukshika99@gmail.com",
+    "linkedin": "https://linkedin.com/in/sivanathan-dilukshika",
+    "github": "https://github.com/Dilukshika",
+    "cvPath": "assets/cv/Dilukshika_Sivanathan_CV.pdf",
+    "cvSize": "311 KB",
+    "availability": "Seeking a Skilled Worker sponsored junior software developer or data role in the UK",
+    "summary": [
+      "First-Class Honours graduate in Applied Computing (University of South Wales) with a Distinction-level Higher National Diploma in Software Engineering, covering programming, application development and database design.",
+      "Backed by nearly three years of hands-on IT experience at the University of Jaffna supporting Linux/Windows systems, servers and networks, plus practical project work building IoT data-collection and monitoring systems with real-time dashboards and automated logging.",
+      "Over a year of UK work history, a quick learner who communicates clearly with stakeholders at all levels and adapts fast to new tools. Recently co-authored peer-reviewed research on AI-driven cybersecurity education, presented at an international conference."
+    ]
+  },
+
+  "stats": [
+    { "value": "1st", "label": "Class Honours Degree", "animate": false },
+    { "value": 3, "label": "Years IT Experience", "animate": true, "suffix": "+" },
+    { "value": 1, "label": "Peer-Reviewed Publication", "animate": true },
+    { "value": 93, "label": "ML Model Accuracy", "animate": true, "suffix": "%" }
+  ],
+
+  "skillsDisplay": "meters",
+
+  "skills": [
+    {
+      "category": "Programming & Development",
+      "icon": "code",
+      "items": [
+        { "name": "Application Development", "level": 85 },
+        { "name": "Object-Oriented Programming", "level": 85 },
+        { "name": "Procedural Programming", "level": 80 },
+        { "name": "Algorithms & Problem Solving", "level": 80 },
+        { "name": "Git / GitHub", "level": 85 }
+      ]
+    },
+    {
+      "category": "Data & Monitoring",
+      "icon": "activity",
+      "items": [
+        { "name": "Real-Time Data Collection", "level": 90 },
+        { "name": "Dashboards & Reporting", "level": 85 },
+        { "name": "IoT Sensor Integration (ESP8266/ESP32)", "level": 90 },
+        { "name": "API / Webhook Automation", "level": 80 },
+        { "name": "Google Sheets Logging", "level": 85 }
+      ]
+    },
+    {
+      "category": "Databases",
+      "icon": "database",
+      "items": [
+        { "name": "Database Design & Development", "level": 80 },
+        { "name": "Structured Data Handling", "level": 80 }
+      ]
+    },
+    {
+      "category": "Systems & Infrastructure",
+      "icon": "server",
+      "items": [
+        { "name": "Linux Administration", "level": 85 },
+        { "name": "Windows Administration", "level": 85 },
+        { "name": "Server Configuration & Maintenance", "level": 80 },
+        { "name": "Networking (Switches, Routers)", "level": 80 },
+        { "name": "Zabbix & Nagios Monitoring", "level": 80 }
+      ]
+    },
+    {
+      "category": "Tools & Applications",
+      "icon": "tool",
+      "items": [
+        { "name": "Arduino", "level": 85 },
+        { "name": "Microsoft Office Suite", "level": 90 },
+        { "name": "POS Systems", "level": 85 }
+      ]
+    },
+    {
+      "category": "Professional",
+      "icon": "users",
+      "items": [
+        { "name": "Research & Written Analysis", "level": 90 },
+        { "name": "Stakeholder Communication", "level": 90 },
+        { "name": "Time Management", "level": 90 },
+        { "name": "Multicultural Teamwork", "level": 95 }
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "energy-meter",
+      "title": "Energy Meter with Data Collection & Monitoring System",
+      "role": "BSc Final-Year Project",
+      "period": "2024 – 2025",
+      "featured": true,
+      "summary": "A real-time energy monitoring system measuring voltage, current and power, streaming live readings to a cloud dashboard with automated data logging.",
+      "highlights": [
+        "Built on an ESP8266 microcontroller with SCT-013 (current) and ZMPT101B (voltage) sensors",
+        "Streamed live readings to a Blynk IoT dashboard for real-time visualisation",
+        "Automated logging to Google Sheets via webhook integration for ongoing analysis and reporting",
+        "Demonstrated a complete end-to-end pipeline: acquisition → processing → visualisation → logging"
+      ],
+      "pipeline": ["Sensors", "ESP8266", "Blynk IoT", "Google Sheets"],
+      "stack": ["ESP8266", "C/C++", "Blynk IoT", "SCT-013", "ZMPT101B", "Webhooks", "Google Sheets API"],
+      "domain": ["IoT", "Data"],
+      "links": []
+    },
+    {
+      "id": "cybersafe",
+      "title": "CyberSafe — AI-Driven Cybercrime Vulnerability Assessment",
+      "role": "Peer-Reviewed Research (Co-Author)",
+      "period": "2026",
+      "featured": true,
+      "summary": "An AI framework using ensemble machine learning for predictive cybercrime vulnerability assessment among Sri Lankan school students, with explainable AI and adaptive game-based learning.",
+      "highlights": [
+        "Ensemble machine learning (SVM and Random Forest) achieving 93%+ predictive accuracy",
+        "SHAP-based explainability for transparent, auditable risk scoring",
+        "18 adaptive game-based learning modules driven by assessed vulnerability",
+        "Delivered as a MERN-stack web application with a Flask AI microservice"
+      ],
+      "stack": ["Python", "scikit-learn", "SHAP", "Flask", "MongoDB", "Express", "React", "Node.js"],
+      "domain": ["AI/ML", "Research"],
+      "linkedPublication": "npairc-2026",
+      "links": []
+    },
+    {
+      "id": "document-locker",
+      "title": "Smart Document Locker System",
+      "role": "HND Project",
+      "period": "2019 – 2021",
+      "featured": false,
+      "summary": "A secure physical document locker using multi-factor authentication, combining hardware integration with embedded programming.",
+      "highlights": [
+        "Multi-factor authentication via RFID and biometric verification",
+        "Built on Arduino with integrated hardware and embedded programming",
+        "Applied security, access-control and application development principles",
+        "Delivered from concept through to a working prototype"
+      ],
+      "stack": ["Arduino", "C/C++", "RFID", "Biometric Sensor", "Embedded Systems"],
+      "domain": ["Embedded", "Security"],
+      "links": []
+    }
+  ],
+
+  "publication": {
+    "id": "npairc-2026",
+    "title": "CyberSafe: An AI-Driven Ludic-Pedagogical Framework for Predictive Cybercrime Vulnerability Assessment Among Sri Lankan School Students",
+    "venue": "NPAIRC 2026 — International Research Conference of the National Police Academy, Sri Lanka",
+    "date": "August 2026",
+    "theme": "Transnational Crime and Social Protection: Integrated Responses for Global Security",
+    "association": "Organised by the National Police Academy Sri Lanka in association with UNODC",
+    "role": "Co-Author",
+    "recognition": "Accepted, presented, and recognised as author with certificate awarded",
+    "coAuthors": ["Selvavinayagan Babiharan — University of Kelaniya, Sri Lanka"],
+    "contributions": [
+      "Ensemble machine learning (SVM and Random Forest) achieving 93%+ accuracy",
+      "SHAP-based explainability for model transparency",
+      "18 adaptive game-based learning modules",
+      "MERN-stack web application with a Flask AI microservice"
+    ],
+    "citation": "Sivanathan, D. & Babiharan, S. (2026). CyberSafe: An AI-Driven Ludic-Pedagogical Framework for Predictive Cybercrime Vulnerability Assessment Among Sri Lankan School Students. NPAIRC 2026, National Police Academy, Sri Lanka."
+  },
+
+  "experienceGroups": [
+    {
+      "org": "SPAR, Cambridge",
+      "location": "United Kingdom",
+      "period": "2025 – Present",
+      "current": true,
+      "type": "operations",
+      "roles": [
+        {
+          "role": "Postmaster",
+          "org": "Post Office (SPAR, Cambridge)",
+          "points": [
+            "Run the in-store Post Office counter, delivering mail, parcel, banking, bill-payment and identity/verification services to customers accurately and efficiently",
+            "Handle cash, foreign currency and high-value transactions with strict accuracy, balancing tills and Post Office accounts daily",
+            "Ensure compliance with Post Office Ltd procedures, anti-money-laundering checks and data-protection requirements, safeguarding confidential customer information",
+            "Oversee day-to-day branch operations, postal stock and secure record-keeping, resolving customer queries professionally in a regulated environment"
+          ]
+        },
+        {
+          "role": "Stock Assistant / Retail Assistant",
+          "org": "SPAR, Cambridge",
+          "points": [
+            "Delivered face-to-face customer service and processed cash/card transactions accurately via POS systems, maintaining strict cash-handling and till-balancing procedures",
+            "Handled confidential customer information and Post Office transactions in a regulated, compliance-focused environment",
+            "Managed stock control, deliveries and visual merchandising while maintaining health and safety standards"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "Lansberry Shop",
+      "location": "United Kingdom",
+      "period": "2024 – 2025",
+      "current": false,
+      "type": "operations",
+      "roles": [
+        {
+          "role": "Sales Assistant",
+          "org": "Lansberry Shop",
+          "points": [
+            "Managed stock replenishment, delivery intake and FIFO stock rotation within a busy retail team",
+            "Assisted customers and supported store opening/closing procedures, building reliable UK work history"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "IT Department, University of Jaffna",
+      "location": "Sri Lanka",
+      "period": "Jul 2022 – May 2024",
+      "current": false,
+      "type": "technical",
+      "roles": [
+        {
+          "role": "IT Support Assistant",
+          "org": "IT Department, University of Jaffna",
+          "points": [
+            "Provided technical support for Linux/Windows systems, keeping internal and public-facing servers running with minimal downtime",
+            "Monitored infrastructure using Zabbix and Nagios, responding to alerts and troubleshooting issues to maintain uptime",
+            "Installed, configured and maintained networking equipment including switches and routers",
+            "Supported staff and students with hardware and software setup, system configuration and device migration",
+            "Produced monitoring data and reports to track system performance and support IT decision-making"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "IDP Education",
+      "location": "Sri Lanka",
+      "period": "2023 (9 months)",
+      "current": false,
+      "type": "operations",
+      "roles": [
+        {
+          "role": "IELTS Invigilator",
+          "org": "IDP Education",
+          "points": [
+            "Set up examination rooms, verified candidate identities and gave precise instructions in a highly regulated environment",
+            "Maintained strict confidentiality and process integrity, strengthening organisational and communication skills"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "qualification": "BSc (Hons) Applied Computing",
+      "grade": "First-Class Honours",
+      "institution": "University of South Wales",
+      "location": "United Kingdom",
+      "period": "2024 – 2025",
+      "note": "Final-year project: Energy Meter Data Collection & Monitoring System.",
+      "projectRef": "energy-meter"
+    },
+    {
+      "qualification": "BTEC Level 5 HND, Computing (Software Engineering)",
+      "grade": "Distinction",
+      "institution": "British College of Applied Studies (Pearson BTEC)",
+      "location": "Sri Lanka",
+      "period": "2019 – 2021",
+      "note": "Distinction across 13 of 14 units, including Programming, Advanced Programming, Application Development, Database Design & Development, Networking and Security."
+    }
+  ],
+
+  "languages": [
+    { "name": "English", "level": "Fluent" },
+    { "name": "Tamil", "level": "Native" }
+  ]
+}

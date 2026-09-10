@@ -1,0 +1,21 @@
+/* ==========================================================================
+   main.css — single-file entry point, kept for 404.html and for anyone who
+   wants one <link>.
+
+   index.html does NOT use this file: @import forces the browser to download
+   main.css before it can even discover the seven sheets inside it, which is a
+   render-blocking waterfall. index.html links all eight in parallel instead.
+
+   Each sheet now declares its own @layer, so the order below is set by the
+   @layer statement and does not depend on import order.
+   ========================================================================== */
+
+@layer reset, base, layout, components, animations, utilities;
+
+@import url("01-tokens.css");     /* outside any layer — custom properties */
+@import url("02-reset.css");
+@import url("03-base.css");
+@import url("04-layout.css");
+@import url("05-components.css");
+@import url("06-animations.css");
+@import url("07-utilities.css");

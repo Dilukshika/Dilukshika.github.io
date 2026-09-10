@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Runs before first paint. The one place a blocking script is correct:
+     it sets the theme (no white flash) and arms the reveal system. -->
+<script>
+  (function () {
+    var html = document.documentElement;
+
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      html.dataset.theme = t;
+    } catch (e) { html.dataset.theme = 'dark'; }
+
+    // Scroll reveals start hidden ONLY while this attribute is present. If
+    // main.js never boots — load error, unsupported browser, file:// open —
+    // the watchdog drops it and every section falls back to plain, visible
+    // text rather than a blank page (§7.7).
+    html.dataset.js = 'pending';
+    setTimeout(function () {
+      if (!window.__portfolioBooted) html.removeAttribute('data-js');
+    }, 3000);
+
+    // ES modules and fetch() are both blocked on file://, so the page cannot
+    // work when it is opened by double-clicking. Flag it and say so.
+    if (location.protocol === 'file:') html.dataset.protocol = 'file';
+  })();
+</script>
+
+<title>Dilukshika Sivanathan — Junior Software &amp; Data Developer | UK</title>
+<meta name="description" content="First-Class BSc (Hons) Applied Computing graduate and published researcher. Junior software and data developer with 3 years of IT experience in Linux, Windows and infrastructure monitoring. Based in Cambridgeshire, UK.">
+<link rel="canonical" href="https://dilukshika.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Dilukshika Sivanathan">
+
+<meta property="og:type"        content="profile">
+<meta property="og:title"       content="Dilukshika Sivanathan — Junior Software &amp; Data Developer">
+<meta property="og:description" content="First-Class BSc (Hons) Applied Computing graduate, published researcher, and IT support professional based in Cambridgeshire, UK.">
+<meta property="og:image"       content="https://dilukshika.github.io/assets/img/og-image.png">
+<meta property="og:url"         content="https://dilukshika.github.io/">
+<meta property="og:locale"      content="en_GB">
+
+<meta name="twitter:card"  content="summary_large_image">
+<meta name="twitter:title" content="Dilukshika Sivanathan — Junior Software &amp; Data Developer">
+<meta name="twitter:image" content="https://dilukshika.github.io/assets/img/og-image.png">
+
+<meta name="theme-color" content="#0A0E14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Cascade layer order is declared here, before any sheet loads, so the eight
+     files below can download in parallel. Pulling them in through main.css's
+     @import chain meant the browser could not discover sheets 2-8 until
+     main.css had arrived — a render-blocking waterfall. -->
+<style>@layer reset, base, layout, components, animations, utilities;</style>
+<link rel="stylesheet" href="css/01-tokens.css">
+<link rel="stylesheet" href="css/02-reset.css">
+<link rel="stylesheet" href="css/03-base.css">
+<link rel="stylesheet" href="css/04-layout.css">
+<link rel="stylesheet" href="css/05-components.css">
+<link rel="stylesheet" href="css/06-animations.css">
+<link rel="stylesheet" href="css/07-utilities.css">
+
+<noscript><style>
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .hero__inner > * { opacity: 1 !important; animation: none !important; }
+  .meter__fill { transform: scaleX(var(--level, 1)) !important; }
+</style></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dilukshika Sivanathan",
+  "jobTitle": "Junior Software & Data Developer",
+  "email": "mailto:dilukshika99@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Cambridgeshire",
+    "addressCountry": "GB"
+  },
+  "url": "https://dilukshika.github.io/",
+  "sameAs": [
+    "https://linkedin.com/in/sivanathan-dilukshika",
+    "https://github.com/Dilukshika"
+  ],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of South Wales" },
+    { "@type": "EducationalOrganization", "name": "British College of Applied Studies" }
+  ],
+  "knowsLanguage": ["English", "Tamil"],
+  "knowsAbout": [
+    "Software Development", "Data Monitoring", "IoT", "Linux Administration",
+    "Windows Administration", "Networking", "Database Design", "Zabbix", "Nagios"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "CyberSafe: An AI-Driven Ludic-Pedagogical Framework for Predictive Cybercrime Vulnerability Assessment Among Sri Lankan School Students",
+  "author": [
+    { "@type": "Person", "name": "Dilukshika Sivanathan" },
+    { "@type": "Person", "name": "Selvavinayagan Babiharan" }
+  ],
+  "datePublished": "2026-08",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "National Police Academy, Sri Lanka"
+  },
+  "isPartOf": {
+    "@type": "PublicationEvent",
+    "name": "NPAIRC 2026 — International Research Conference of the National Police Academy, Sri Lanka"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<div class="file-warning" role="alert">
+  <strong>This page was opened from your hard drive.</strong>
+  Browsers block scripts and data files over <code>file://</code>, so nothing below the
+  headline will load. Serve it over HTTP instead:
+  run <code>powershell -ExecutionPolicy Bypass -File tools\serve.ps1</code>
+  in the project folder, then open <code>http://localhost:8080</code>.
+</div>
+
+<!-- Icon sprite, inlined: one fewer request, and <use> keeps working when the
+     page is opened without a server (external references are blocked there). --><svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <symbol id="code" viewBox="0 0 24 24">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </symbol>
+  <symbol id="activity" viewBox="0 0 24 24">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+  </symbol>
+  <symbol id="database" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+  </symbol>
+  <symbol id="server" viewBox="0 0 24 24">
+    <rect x="2" y="2" width="20" height="8" rx="2"/>
+    <rect x="2" y="14" width="20" height="8" rx="2"/>
+    <line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+  </symbol>
+  <symbol id="tool" viewBox="0 0 24 24">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </symbol>
+  <symbol id="users" viewBox="0 0 24 24">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </symbol>
+
+  <symbol id="mail" viewBox="0 0 24 24">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22 6 12 13 2 6"/>
+  </symbol>
+  <symbol id="phone" viewBox="0 0 24 24">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+  <symbol id="map-pin" viewBox="0 0 24 24">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+  </symbol>
+  <symbol id="linkedin" viewBox="0 0 24 24">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+  </symbol>
+  <symbol id="github" viewBox="0 0 24 24">
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  </symbol>
+
+  <symbol id="download" viewBox="0 0 24 24">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </symbol>
+  <symbol id="external-link" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+  </symbol>
+  <symbol id="copy" viewBox="0 0 24 24">
+    <rect x="9" y="9" width="13" height="13" rx="2"/>
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </symbol>
+  <symbol id="check" viewBox="0 0 24 24">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 24 24">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </symbol>
+  <symbol id="close" viewBox="0 0 24 24">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </symbol>
+  <symbol id="sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.5"/>
+    <line x1="12" y1="1.5" x2="12" y2="3.5"/><line x1="12" y1="20.5" x2="12" y2="22.5"/>
+    <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+    <line x1="1.5" y1="12" x2="3.5" y2="12"/><line x1="20.5" y1="12" x2="22.5" y2="12"/>
+    <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+  </symbol>
+  <symbol id="moon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </symbol>
+  <symbol id="arrow-up" viewBox="0 0 24 24">
+    <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+  </symbol>
+  <symbol id="arrow-right" viewBox="0 0 24 24">
+    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+  </symbol>
+  <symbol id="arrow-down" viewBox="0 0 24 24">
+    <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+  </symbol>
+  <symbol id="chevron-down" viewBox="0 0 24 24">
+    <polyline points="6 9 12 15 18 9"/>
+  </symbol>
+
+  <symbol id="award" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="6.5"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+  </symbol>
+  <symbol id="file-text" viewBox="0 0 24 24">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+  </symbol>
+  <symbol id="briefcase" viewBox="0 0 24 24">
+    <rect x="2" y="7" width="20" height="14" rx="2"/>
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+  </symbol>
+  <symbol id="globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/>
+    <path d="M12 3a15.3 15.3 0 0 1 0 18 15.3 15.3 0 0 1 0-18z"/>
+  </symbol>
+
+</svg>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ==========================================================================
+     Nav
+     ========================================================================== -->
+<header class="nav" id="nav">
+  <div class="nav__inner wrap">
+    <a class="nav__brand" href="#hero">Dilukshika<span class="nav__brand-dot">.</span></a>
+
+    <nav class="nav__links" aria-label="Sections">
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#skills">Skills</a>
+      <a class="nav__link" href="#projects">Projects</a>
+      <a class="nav__link" href="#publication">Publication</a>
+      <a class="nav__link" href="#experience">Experience</a>
+      <a class="nav__link" href="#education">Education</a>
+      <a class="nav__link" href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn btn--primary nav__cv" href="assets/cv/Dilukshika_Sivanathan_CV.pdf" download>
+        <svg class="icon" aria-hidden="true"><use href="#download"/></svg>
+        Download CV
+      </a>
+
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button"
+              aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="icon theme-toggle__sun"  aria-hidden="true"><use href="#sun"/></svg>
+        <svg class="icon theme-toggle__moon" aria-hidden="true"><use href="#moon"/></svg>
+      </button>
+
+      <button class="icon-btn nav__toggle" id="nav-toggle" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <svg class="icon nav__toggle-open"  aria-hidden="true"><use href="#menu"/></svg>
+        <svg class="icon nav__toggle-close hidden" aria-hidden="true"><use href="#close"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile overlay menu -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div>
+    <nav>
+      <ul class="menu__list">
+        <li style="--i:0"><a class="menu__link" href="#about">About</a></li>
+        <li style="--i:1"><a class="menu__link" href="#skills">Skills</a></li>
+        <li style="--i:2"><a class="menu__link" href="#projects">Projects</a></li>
+        <li style="--i:3"><a class="menu__link" href="#publication">Publication</a></li>
+        <li style="--i:4"><a class="menu__link" href="#experience">Experience</a></li>
+        <li style="--i:5"><a class="menu__link" href="#education">Education</a></li>
+        <li style="--i:6"><a class="menu__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu__footer">
+      <a class="btn btn--primary" href="assets/cv/Dilukshika_Sivanathan_CV.pdf" download>
+        <svg class="icon" aria-hidden="true"><use href="#download"/></svg>
+        Download CV
+      </a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ========================================================================
+       Hero — hardcoded so crawlers and no-JS visitors get the headline
+       ======================================================================== -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="layout">
+      <div class="hero__inner">
+        <p class="hero__status" style="--i:0">
+          <span class="hero__pulse" aria-hidden="true"></span>
+          Open to UK Skilled Worker sponsorship
+        </p>
+
+        <h1 class="hero__name" style="--i:1">
+          <span>Dilukshika</span>
+          <span class="hero__surname">Sivanathan</span>
+        </h1>
+
+        <p class="hero__role" style="--i:2">
+          Junior Software &amp; Data Developer
+          <span class="sep" aria-hidden="true">/</span>
+          First-Class BSc (Hons)
+        </p>
+
+        <p class="hero__tagline" style="--i:3">
+          I build data-collection and monitoring systems — from sensor to dashboard.
+        </p>
+
+        <ul class="hero__meta" style="--i:4">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#map-pin"/></svg>
+            Cambridgeshire, UK
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#award"/></svg>
+            Published researcher — NPAIRC 2026
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#server"/></svg>
+            3 years IT support &amp; infrastructure
+          </li>
+        </ul>
+
+        <div class="hero__cta" style="--i:5">
+          <a class="btn btn--primary" id="hero-cv" href="assets/cv/Dilukshika_Sivanathan_CV.pdf" download>
+            <svg class="icon" aria-hidden="true"><use href="#download"/></svg>
+            Download CV
+          </a>
+          <a class="btn btn--ghost" href="#projects">
+            View projects
+            <svg class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="mailto:dilukshika99@gmail.com">
+            <svg class="icon" aria-hidden="true"><use href="#mail"/></svg>
+            Email me
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#about" aria-hidden="true" tabindex="-1">
+      Scroll
+      <svg class="icon" aria-hidden="true"><use href="#arrow-down"/></svg>
+    </a>
+  </section>
+
+  <!-- Shown only if data/content.json fails to load (§10.5) -->
+  <div class="layout">
+    <div class="content-fallback">
+      <h2>The rest of this page could not load</h2>
+      <p class="secondary">The full detail is in the CV, which always downloads directly.</p>
+      <div class="cluster">
+        <a class="btn btn--primary" href="assets/cv/Dilukshika_Sivanathan_CV.pdf" download>Download CV</a>
+        <a class="btn btn--ghost" href="mailto:dilukshika99@gmail.com">dilukshika99@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       About
+       ======================================================================== -->
+  <section class="section section--json layout" id="about" aria-labelledby="about-title">
+    <div class="section__inner">
+      <header class="section-head" data-reveal>
+        <p class="section-head__eyebrow"><span class="mono">01</span> About</p>
+        <h2 id="about-title">Profile</h2>
+        <p class="section-head__lede">
+          A First-Class Applied Computing graduate who has spent three years keeping real
+          systems running — and now builds the tools that measure them.
+        </p>
+      </header>
+
+      <div class="stats" id="stats" data-reveal="scale"></div>
+
+      <div class="about__grid">
+        <div class="about__prose" id="about-prose" data-reveal></div>
+
+        <aside class="about__aside" data-reveal="right">
+          <div class="avatar">
+            <span class="avatar__monogram" aria-hidden="true">DS</span>
+          </div>
+          <div class="panel">
+            <p class="panel__title">At a glance</p>
+            <dl class="kv" id="about-kv"></dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Skills
+       ======================================================================== -->
+  <section class="section section--json layout" id="skills" aria-labelledby="skills-title">
+    <div class="section__inner">
+      <header class="section-head" data-reveal>
+        <p class="section-head__eyebrow"><span class="mono">02</span> Skills</p>
+        <h2 id="skills-title">What I work with</h2>
+        <p class="section-head__lede">
+          Six clusters, drawn straight from what the work actually required — no padding.
+        </p>
+      </header>
+
+      <div class="grid-auto" id="skills-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Projects
+       ======================================================================== -->
+  <section class="section section--json layout" id="projects" aria-labelledby="projects-title">
+    <div class="section__inner">
+      <header class="section-head" data-reveal>
+        <p class="section-head__eyebrow"><span class="mono">03</span> Projects</p>
+        <h2 id="projects-title">Things I have built</h2>
+        <p class="section-head__lede">
+          End-to-end systems: sensors, firmware, transport, dashboard, and the logging
+          that makes the data worth keeping.
+        </p>
+      </header>
+
+      <div class="chips" id="project-chips" role="group" aria-label="Filter projects by domain"></div>
+      <div class="projects__grid" id="projects-grid"></div>
+      <p class="muted mono hidden" id="projects-empty">No projects match that filter.</p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Publication — full-bleed band
+       ======================================================================== -->
+  <section class="publication section--json" id="publication" aria-labelledby="publication-title">
+    <div class="section layout">
+      <div class="section__inner" id="publication-body"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Experience
+       ======================================================================== -->
+  <section class="section section--json layout" id="experience" aria-labelledby="experience-title">
+    <div class="section__inner">
+      <header class="section-head" data-reveal>
+        <p class="section-head__eyebrow"><span class="mono">05</span> Experience</p>
+        <h2 id="experience-title">Where I have worked</h2>
+        <p class="section-head__lede">
+          Three years in university IT, plus over a year of UK work history in
+          regulated, customer-facing roles.
+        </p>
+      </header>
+
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Education
+       ======================================================================== -->
+  <section class="section section--json layout" id="education" aria-labelledby="education-title">
+    <div class="section__inner">
+      <header class="section-head" data-reveal>
+        <p class="section-head__eyebrow"><span class="mono">06</span> Education</p>
+        <h2 id="education-title">Qualifications</h2>
+      </header>
+
+      <div class="grid-auto" id="education-grid"></div>
+
+      <div class="stack">
+        <p class="panel__title">Languages</p>
+        <div class="langs" id="langs" data-reveal></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Contact
+       ======================================================================== -->
+  <section class="section layout" id="contact" aria-labelledby="contact-title">
+    <div class="section__inner">
+      <div class="contact__card" data-reveal="scale">
+        <p class="section-head__eyebrow"><span class="mono">07</span> Contact</p>
+        <h2 class="contact__title" id="contact-title">Let's talk</h2>
+        <p class="contact__lede" id="contact-lede">
+          Seeking a Skilled Worker sponsored junior software developer or data role in the UK.
+          The quickest route is email — I reply the same day.
+        </p>
+
+        <div class="contact__links" id="contact-links"></div>
+
+        <a class="btn btn--primary" href="assets/cv/Dilukshika_Sivanathan_CV.pdf" download>
+          <svg class="icon" aria-hidden="true"><use href="#download"/></svg>
+          Download CV <span class="mono muted" id="cv-size"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner wrap">
+    <p>© <span id="year">2026</span> Dilukshika Sivanathan</p>
+    <div class="footer__socials">
+      <a class="icon-btn" href="https://linkedin.com/in/sivanathan-dilukshika"
+         target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg class="icon" aria-hidden="true"><use href="#linkedin"/></svg>
+      </a>
+      <a class="icon-btn" href="https://github.com/Dilukshika"
+         target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg class="icon" aria-hidden="true"><use href="#github"/></svg>
+      </a>
+      <a class="icon-btn" href="mailto:dilukshika99@gmail.com" aria-label="Email">
+        <svg class="icon" aria-hidden="true"><use href="#mail"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#arrow-up"/></svg>
+</button>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

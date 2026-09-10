@@ -1,0 +1,19 @@
+{
+  "name": "Dilukshika Sivanathan — Junior Software & Data Developer",
+  "short_name": "Dilukshika S.",
+  "description": "Portfolio of Dilukshika Sivanathan — First-Class BSc (Hons) Applied Computing graduate, published researcher, and IT support professional based in Cambridgeshire, UK.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en-GB",
+  "background_color": "#0A0E14",
+  "theme_color": "#0A0E14",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
