@@ -879,9 +879,8 @@ dilukshika-portfolio/
 │   │   ├── sprite.svg              All UI icons as <symbol>
 │   │   └── favicon.svg
 │   ├── img/
-│   │   ├── profile.webp            600×600, + .jpg fallback   [owner to supply]
-│   │   ├── profile.jpg
-│   │   ├── og-image.png            1200×630 social card
+│   │   ├── profile.jpg             800×800 headshot, EXIF stripped
+│   │   ├── og-image.png            1200×630 social card       [still to supply]
 │   │   └── noise.png               ~4 KB tiling grain overlay
 │   └── cv/
 │       └── Dilukshika_Sivanathan_CV.pdf
@@ -1095,7 +1094,7 @@ Most layout uses intrinsic sizing and needs **no breakpoint at all**:
 - [ ] **Scroll lock** on `<body>` while the menu is open, without layout shift (`scrollbar-gutter: stable`).
 - [ ] **Colour contrast:** all pairs verified in §6.2 for both themes.
 - [ ] **Colour is never the only signal:** current-role timeline nodes also carry a "Current" text label; filter state uses `aria-pressed` plus a border change, not just fill.
-- [ ] **Images:** `profile.webp` gets a descriptive `alt`; all decorative SVG/canvas get `aria-hidden="true"`; the hero canvas also gets `role="presentation"`.
+- [ ] **Images:** `profile.jpg` gets a descriptive `alt`; all decorative SVG/canvas get `aria-hidden="true"`; the hero canvas also gets `role="presentation"`.
 - [ ] **Meters:** `role="img"` + word-based `aria-label` (§8.2), not raw percentages.
 - [ ] **Live regions:** the copy-citation confirmation announces via `aria-live="polite"`.
 - [ ] **Filter changes** announce the result count via a polite live region ("Showing 2 projects").
@@ -1407,12 +1406,12 @@ Real-device pass on: an iPhone (Safari), an Android phone (Chrome), a tablet, a 
 | **D1** | Skill display format | (a) Animated percentage meters (b) Plain tag pills, no numbers | **(a)** — it's the stronger visual and the §7 animation showcase; the honesty guardrails in §5.3 + §8.2 cover the risk. Switchable to (b) with one JSON flag if you'd rather not self-rate. |
 | **D2** | Project repository links | (a) Publish Energy Meter code to GitHub and link it (b) Ship with no links | **(a)** — R8 is the biggest credibility gap on the site. Even a README-only repo with photos and the Arduino sketch materially helps. |
 | **D3** | Show phone number and home town | (a) Show, obfuscated (b) Email + LinkedIn only, county-level location | **Closed — (b), by the owner.** Obfuscation only slows a scraper down; it does not stop one, and the number cannot be recalled once it has been harvested. A recruiter who wants to call gets the number from the CV, which is one click away. The town was dropped with it: a small-town name plus a full name is enough to locate someone, and it buys the site nothing that `Cambridgeshire` does not. A fourth contact tile (CV download) replaces the phone tile so the grid still reads as four. |
-| **D4** | Profile photo | (a) Include (b) Text-only hero | **(a)** — a photo measurably increases recruiter engagement in the UK market. Needs a square headshot, ≥ 600 px, from you. |
+| **D4** | Profile photo | (a) Include (b) Text-only hero | **Closed — (a), supplied.** Graduation portrait, cropped square to head-and-shoulders and resized to 800 × 800 at `assets/img/profile.jpg`; it renders in the About aside over the monogram fallback. Re-encoding stripped the camera EXIF block, so no capture metadata ships with it. |
 | **D5** | Deployment URL | (a) `Dilukshika.github.io` (clean root) (b) `github.io/dilukshika-portfolio` | **(a)** — cleaner on a CV and in a LinkedIn profile link. |
 
 ### 19.5 Assets required from the owner
 
-1. **Square headshot**, ≥ 600 × 600 px (D4)
+1. ~~**Square headshot**, ≥ 600 × 600 px (D4)~~ — supplied, cropped from the graduation photo
 2. **GitHub repo URLs** for any project you want linked (D2)
 3. **Confirmation of the LinkedIn slug** — the CV shows `linkedin.com/in/sivanathan-dilukshika`; confirm it resolves
 4. **Any project photos** — a photo of the physical energy meter build would be a strong, authentic visual

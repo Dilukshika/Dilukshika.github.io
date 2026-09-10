@@ -110,13 +110,17 @@ them first.
 
 The layout works without these; each has a designed fallback.
 
-| File | Size | Fallback in use today |
+| File | Size | Status |
 |---|---|---|
-| `assets/img/profile.webp` (+ `.jpg`) | 600×600 | The gradient **DS** monogram |
-| `assets/img/og-image.png` | 1200×630 | Social previews show text only |
+| `assets/img/profile.jpg` | 800×800 | **In place** — graduation headshot, shown in the About panel |
+| `assets/img/og-image.png` | 1200×630 | **Still missing** — link shares (LinkedIn, WhatsApp) show no preview image |
 
-To use the headshot, add the file and put an `<img>` inside `.avatar` in
-`index.html`, above the `.avatar__monogram` span.
+To swap the headshot, replace `assets/img/profile.jpg` with another square crop
+and keep the filename. The gradient **DS** monogram sits underneath it in
+`.avatar`, so removing the file falls back cleanly rather than leaving a hole.
+Re-encoding the crop also strips the camera's EXIF metadata, which is worth
+keeping in mind — phone photos can carry the GPS coordinates of where they were
+taken, and publishing that undoes the address decision above.
 
 ---
 

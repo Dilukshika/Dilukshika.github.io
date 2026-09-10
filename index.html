@@ -410,8 +410,14 @@
         <div class="about__prose" id="about-prose" data-reveal></div>
 
         <aside class="about__aside" data-reveal="right">
+          <!-- Monogram sits underneath as the fallback: if the photo is ever
+               removed or fails to load, the panel still fills correctly. -->
           <div class="avatar">
             <span class="avatar__monogram" aria-hidden="true">DS</span>
+            <img src="assets/img/profile.jpg"
+                 width="800" height="800"
+                 loading="lazy" decoding="async"
+                 alt="Dilukshika Sivanathan in cap and gown at her University of South Wales graduation">
           </div>
           <div class="panel">
             <p class="panel__title">At a glance</p>

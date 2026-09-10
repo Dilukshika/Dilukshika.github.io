@@ -458,9 +458,17 @@
   border: 1px solid var(--border-subtle);
   background: var(--bg-elevated);
 }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
+/* Absolute, so the photo stacks over the monogram rather than pushing it
+   around — the monogram then only shows through if the image is missing. */
+.avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-/* Shown until a real headshot is added at assets/img/profile.webp */
+/* Fallback beneath the headshot at assets/img/profile.jpg */
 .avatar__monogram {
   position: absolute;
   inset: 0;
